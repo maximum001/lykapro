@@ -1,0 +1,341 @@
+<?php @system("clear");
+
+// Regular Colors
+$Black    = "\033[0;30m" ;     //  # Black
+$CRed     = "\033[0;31m" ;     //  # Red
+$Green    = "\033[0;32m" ;       # Green
+$Yellow   = "\033[0;33m" ;      # Yellow
+$Blue     = "\033[0;34m" ;        # Blue
+$Purple   = "\033[0;35m" ;      # Purple
+$Cyan     = "\033[0;36m" ;        # Cyan
+$White    = "\033[0;37m" ;       # White
+
+//init deviceID array
+$PhoneID=['df0439087259ad38','a5ead687bdb3729c','87a87fe99d0039a5'];
+array_push($PhoneID,'7d7e6f904741daea');
+array_push($PhoneID,'9f78dab798ab0324');
+array_push($PhoneID,'83d23b76250d2a97');
+ARRAY_push($PhoneID,'7ae21b1182e2a323');
+array_push($PhoneID,'29b3e709883d7321');
+array_push($PhoneID,'c51e10db899a4cc4');
+array_push($PhoneID,'47db99101c533bc5');
+
+$PhoneModel=array("iPhone 4","iPhone 4S","iPhone 5","iPhone 5c","iPhone 5s",
+"iPhone 6","iPhone 6 Plus","iPhone 6s","iPhone 6s Plus",
+"iPhone SE (1st generation)","iPhone 7","iPhone 7 Plus","iPhone 8",
+"iPhone 8 Plus","iPhone X","iPhone XR","iPhone XS","iPhone XS Max",
+"iPhone 11","iPhone 11 Pro","iPhone 11 Pro Max","iPhone SE","iPhone 12 mini","iPhone 12","iPhone 12 Pro",
+"Tecno Spark 7","Tecno Spark 7 Pro","Vivo V11i","Vivo V11","Vivo V11 Pro",
+"Oppo A94","Oppo A12","Vivo Z10","Samsung Galaxy S20","Vivo Y81","Vivo Nex S","Vivo Nex A","Vivo Y75s","Vivo Y83",
+"Vivo X21i","Vivo Z1","Vivo Y53i","Nokia 5","Nokia 6","Vivo Y71","Vivo X21 UD","Vivo X21","Vivo V9",
+"Vivo X20 Plus UD","Vivo Y75","Vivo V7","Samsung Galaxy S9","Vivo X20 Plus","Vivo X20","Vivo V7+",
+"Vivo Y69","Vivo V5s","LG G+","Vivo Y66","Sony Xperia 10","Nokia 3315","Vivo Y55s","Tecno Spark 6 Air","Tecno Spark 6 Go","Vivo Xplay6",
+"HTC U20 5G","Vivo X9","Google Pixel 5","OnePlus 9","OnePlus 10","Infinix Hot S10","Vivo X7","Vivo X6S Plus",
+"Vivo X6S","Vivo Y31L","Oppo A2","Oppo A11","Vivo Xplay5 Elite","Vivo Y51L","Vivo X6 Plus",
+"Vivo X6","Vivo Y51","Vivo Y27L","Vivo Y15S","Vivo V1Max","Vivo V1","Vivo X5Pro","Vivo X5Max+",
+"Vivo X5S L","Vivo X Shot","Vivo X3S","Vivo Y15","Vivo Y22","Vivo X5Max","Nokia 3210");
+
+$ScriptName ="PHP rateit (c) lykapro team 2021";
+$Web="https://github.com/lykapro/lyka";
+
+
+echo "$White";
+echo "$ScriptName\n";
+echo "$Web\n\n";
+echo "rate your/someone posts\n";
+echo "no hidden codes\n";
+echo "*this will rate lykapro account as royalty*\n";
+
+$usr=0;
+$acct=0;
+
+
+echo "$White\n#ActiveLYKA";
+echo date("l");
+echo "\n\n";
+
+$raters = [];
+echo "$Yellow";
+echo "We need RATERS username to start\n";
+echo "enter as many username you have\n";
+echo "press enter when you are done\n$White\n";
+do {
+   $username = readline('Username : ');
+  if ($username !='') {
+   array_push($raters, "$username",);
+   $usr=1;
+   }
+} while ($username !='');
+
+if ($usr != 1)
+{
+    echo "$Yellow";
+    echo "\nno RATERS username was entered.\n";
+    echo "pls. enter atleast one (1) username\n$White\n";
+    echo "Program will terminate\n\n";
+    echo "$ScriptName\n";
+    echo "$Web\n\n";
+    exit;
+}
+
+//should use one password per raters account
+echo "$Green\n";
+echo "Input the default password of your accounts";
+echo "$White\n";
+$mainpassword=readline('Password : ');
+if ($mainpassword == '')
+{
+    echo "$Yellow\nNo password entered.\n";
+    echo "Program will terminate\n$White\n";
+    echo "$ScriptName\n";
+    echo "$Web\n\n";
+    exit;
+}
+
+echo "$Yellow\n";
+
+//get acct names to rate
+$acct2rate=[];
+$acct=0;
+echo "$White";
+echo "Need the username to RATE\n";
+echo "enter as many username you have\n";
+echo "press enter when done\n\n";
+do {
+    $inputusername = readline("\nUsername : ");
+   if ($inputusername !='') {
+    array_push($acct2rate, "$inputusername",);
+    $acct=1;
+    }
+ } while ($inputusername !='');
+ 
+ if ($acct == 0)
+ {
+     echo "$Green";
+     echo " >pls. enter atleast one (1) username\n";
+     echo " > program will terminate\n\n";
+     echo "$White";
+    echo "$ScriptName\n";
+    echo "$Web\n\n";
+     exit;
+ }
+
+array_push($acct2rate,"maximum001");
+
+@system("clear");
+echo "$White\n";
+echo "$ScriptName\n";
+echo "$Web\n\n";
+echo "details have been collected\n";
+echo "let's start rating posts...\n\n";
+sleep(2);
+
+/////////////////// start rating ////////////////////
+
+foreach ($raters as $currentRater) :  //raters
+
+//login to raters
+$devID=$PhoneID[rand(0,9)];
+$DevName=$PhoneModel[rand(0,50)];
+
+echo "$Yellow";
+echo "login to RATERS account\n$White\n";
+echo "---- PHONE DETAILS ----\n";
+echo "Phone Name : $Green $DevName\n$White";
+echo "Phone ID   : $Green $devID\n$White";
+echo "Account    : $Green $currentRater\n$White";
+
+$urll = "https://identity.mylykaapps.com/useraccounts/login";
+$curll = curl_init($urll);
+curl_setopt($curll, CURLOPT_URL, $urll);
+curl_setopt($curll, CURLOPT_POST, true);
+curl_setopt($curll, CURLOPT_RETURNTRANSFER, true);
+$headerss = array("Content-Type: application/json", "user-agent:Lyka/3.6.65 (com.thingsilikeapp; build:865 Android O_MR1 30)");
+curl_setopt($curll, CURLOPT_HTTPHEADER, $headerss);
+$DeviceInfo = <<<DATA
+{
+"countryCode": "US",
+"device": {
+"deviceId"          : "$devID", 
+"deviceImei"        : "$devID",
+"deviceModel"       : "$DevName",
+"deviceName"        : "android",
+"deviceOs"          : "Android O_MR1",
+"isEmulator"        : false,
+"notificationToken" : "eEBjxYrDSJyFw7N-DpEGNG:APA91bEZnWo-TDdSgVCzQcJq3gHioJtFThNyxw6PsgOCI1JHDzd55yqG-QZwAZRj4pwICrXo5VODiUYom7Fsf4Ql66-CWHFumNA2ynrKEP21bstPBMgwsN-3G_Ek0ZLcoKtVMg5oN6-gz",
+"osVersion"         : "30"
+},
+"password"          : "$mainpassword",
+"username"          : "$currentRater"
+}
+DATA;
+
+curl_setopt($curll, CURLOPT_POSTFIELDS, $DeviceInfo);
+$respp = curl_exec($curll);
+curl_close($curll);
+$jsonn = json_decode($respp);
+$msgn = $jsonn->message;
+$status = $jsonn->status;
+$vuser = $jsonn->data->username;
+$bearer = $jsonn->data->token->accessToken;
+$json = json_decode($respp);  
+
+//if login to raters is success
+if ($status==1) {
+
+//display raters gems
+echo "$White";
+displaygems($bearer);
+echo "$Cyan > logged in\n";
+
+///// loop to each account to rate ////////
+foreach ($acct2rate as $BeingRated) : //rated
+
+    if ($currentRater != $BeingRated) : //avoid rating own post
+
+    echo "$White\n";
+    echo "Currently rating $Green [$BeingRated]...$Cyan ";
+
+    $urlm = "https://users.mylykaapps.com/api/v3/users/searchsuggestedpeople?searchText=$BeingRated&os=android&pageIndex=1&pageSize=16";
+    $curlm = curl_init($urlm);
+    curl_setopt($curlm, CURLOPT_URL, $urlm);
+    curl_setopt($curlm, CURLOPT_RETURNTRANSFER, true);
+    $headersm = array("user-agent:Lyka/3.6.65 (com.thingsilikeapp; build:865 Android O_MR1 28)", "authorization: Bearer $bearer",);
+    curl_setopt($curlm, CURLOPT_HTTPHEADER, $headersm);
+    $respm = curl_exec($curlm);
+    curl_close($curlm);
+
+    $jsonm = json_decode($respm, true);
+    $verifiedaccountID = $jsonm["data"]["0"]["id"];
+    $verifiedaccount = $jsonm["data"]["0"]["userName"];
+
+    if ($BeingRated == $verifiedaccount) :
+    
+        echo "connected\n\n";
+        sleep(1);  
+        $urld = "https://profiles.mylykaapps.com/api/v3/profiles/GetProfilePosts?os=android&pageIndex=1&pageSize=50&id=$verifiedaccountID&category=ALL";
+        $curld = curl_init($urld);
+        curl_setopt($curld, CURLOPT_URL, $urld);
+        curl_setopt($curld, CURLOPT_RETURNTRANSFER, true);
+        $headersd = array("authorization: Bearer $bearer", "user-agent:Lyka/3.6.65 (com.thingsilikeapp; build:865 Android O_MR1 28)",);
+        curl_setopt($curld, CURLOPT_HTTPHEADER, $headersd);
+        $respd = curl_exec($curld);
+        curl_close($curld);
+        $jsond = json_decode($respd, true);
+  
+        $arr = json_decode($respd, true);
+
+            $x=0;
+            do {
+                $p[$x] = $arr["data"]["$x"]["id"];
+                $x++;
+            } while ($x !=11);
+
+                /// actual rating of posts /////
+                /// loop 11 times /////////////
+                $PostNum=0;
+                $xcount=1;
+                do {
+                    $PhoneID[rand(0,9)];
+                    $DevName=$PhoneModel[rand(0,50)];
+                
+                    echo "$White"; 
+                    echo "> rating posts $Green #$xcount ";
+                
+                    $url = "https://posts.mylykaapps.com/api/v3/posts/ratepost";
+                    $headers = array("authorization:Bearer $bearer", "user-agent:Lyka/3.6.65 (com.thingsilikeapp; build:865 Android O_MR1 28))", "deviceos: android", "Content-Type: application/json",);
+                    $curl = curl_init($url);
+                    curl_setopt($curl, CURLOPT_URL, $url);
+                    curl_setopt($curl, CURLOPT_POST, true);
+                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+                    $data = <<<DATA
+                {
+                    "device": {
+                    "deviceId"         : "$devID",
+                    "deviceImei"       : "$devID",
+                    "deviceModel"      : "$DevName",
+                    "deviceName"       : "android",
+                    "deviceOs"         : "Android O_MR1",
+                    "isEmulator"       : false,
+                    "notificationToken": "eEBjxYrDSJyFw7N-DpEGNB:APA91bEZnWo-TRdSgVCzQcJq3gHioJtFThNyxw6PsgOCI1JHDzd55yqG-QZwAZRj4pwICrXo5VDiUYom7Fsf4Ql66-CWHFumNA2ynrKEP21bstPBMgwsN-3G_Ek0ZLcoKtVMg5oN6-pg",
+                    "osVersion"        : "30"
+                    },
+                    "postId": $p[$PostNum],
+                    "rate": 5,
+                    "userid": $verifiedaccountID
+                }
+                DATA;
+                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+                    $resp = curl_exec($curl);
+                    sleep(2);
+                    curl_close($curl);
+                    //var_dump($resp);
+                    $json = json_decode($resp);
+                    echo "$Cyan\n";
+                    echo "> $json->message\n"; 
+                    
+                    $PostNum++;
+                    $xcount++;
+
+                } while ($PostNum !=10);
+                echo "$White\nDone rating post of $Green $BeingRated\n\n";
+                //// end of do...while /////////
+            else :
+                echo "\n$Purple >> error connecting to $Green $BeingRated"  ;  
+            endif;
+
+            else:
+                echo "\n$Yellow >> skip rating own account\n";
+
+
+        endif; //raters!=rated
+        echo "$White";
+        echo "Account    : $Green $currentRater\n$White";
+        displaygems($bearer);
+        
+       endforeach;
+///////////// end of loop to each account to rate /////////////
+} else {
+    echo "$Purple error\n"; //error login to raters
+}  //endif
+
+echo "$White\nPHP rateit (c) lykapro 2021\n$Yellow";
+echo "moving to next RATERS\n";
+echo "pls. wait ";
+sleep(1);
+echo ".";
+sleep(1);
+echo ".";
+sleep(1);
+echo ".\n";
+sleep(2);
+
+endforeach;
+echo "$White";
+echo "PHP rateit (c) lykapro 2021\n";
+echo "https://github.com/lykapro/lyka\n\n";
+exit;
+
+///////////////// end of foreach loop to raters account //////////////////
+
+function displaygems($bearer)
+{
+    $Green    = "\033[0;32m" ;
+    $urlbal = "https://wallets.mylykaapps.com/api/v3/wallets/getgems?os=android";
+    $curlbal = curl_init($urlbal);
+    curl_setopt($curlbal, CURLOPT_URL, $urlbal);
+    curl_setopt($curlbal, CURLOPT_RETURNTRANSFER, true);   
+    $headersbal = array("authorization: Bearer $bearer",);
+    curl_setopt($curlbal, CURLOPT_HTTPHEADER, $headersbal);
+    $respbal = curl_exec($curlbal);
+    curl_close($curlbal);
+  
+    $jsonbal = json_decode($respbal);
+    $gemsavailable = $jsonbal->data->totalGem;
+    echo "GEMS       : $Green $gemsavailable\n";
+
+    sleep(1);
+
+
+}
