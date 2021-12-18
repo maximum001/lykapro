@@ -108,8 +108,8 @@ if ($mainpassword == '')
     echo "\nno password was entered\n";
     echo "password is needed to proceed\n\n";
     echo "$White";
-echo "$ScriptName\n";
-echo "$Web\n\n";
+    echo "$ScriptName\n";
+    echo "$Web\n\n";
     exit;
 }
 
@@ -137,13 +137,12 @@ $devID=$DeviceIDarray[rand(0,9)];
 $DevName=$DeviceArray[rand(0,80)];
 
 echo "$White";
-echo "Dummy phone details\n\n";
+echo "Account Details\n\n";
 echo "Phone Name | $DevName\n";
 echo "Phone ID   | $devID\n";
-echo "Account    | $currentUser ...";
+echo "Username   | $currentUser\n";
 
 echo "$Cyan";
-
 
 //Login to account
 $urll = "https://identity.mylykaapps.com/useraccounts/login";
@@ -195,7 +194,7 @@ do {
    $device_id = $DeviceIDarray[rand(0,9)];
    
    echo "$White";
-   echo "> #$postloop moments is being added. ";
+   echo "> posting moments #$postloop > ";
    echo "$Yellow"; 
    addMoments($vuser, $bearer, $device_id);
    echo "\n";
@@ -215,8 +214,8 @@ echo "$Web\n\n";
 } //end of status==1   
 
 echo "$Green";
-echo "addmoment summary\n";
-echo "Account    | $currentUser\n";
+echo "PHP addmoments summary\n\n";
+echo "Username   | $currentUser\n";
 echo "New Moments| $postcount\n";
 displaygems($bearer);
 echo "********\n\n";
@@ -246,14 +245,10 @@ function displaygems($bearer)
     echo "GEMS       | $gemsavailable\n";
 
     sleep(1);
-
-
 }
-
 
 function addMoments($currentUser, $bearer, $device_id) {
    
-
    $currentUsrID = getUserId($device_id, $bearer);
 
    $uploadLegacy = "https://media.mylykaapps.com/api/v1/media/social/multi-upload-url";
@@ -424,7 +419,7 @@ function addMoments($currentUser, $bearer, $device_id) {
                         $bearer);
                    $response_message = $momnts->message;
                    if( $response_message == "Moment retrieved."){
-                       echo "added";
+                       echo "success";
                        $uploaded_count++;
                        $upload_attempt = 0;
                    } else {
