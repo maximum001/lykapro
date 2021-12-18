@@ -7,7 +7,7 @@
 - select Mirrors by Tsin or BFSU (whatever is working)
 - issue the command
 - <b>$ apt update -y </b>
-- <b>$ apt upgrade -y </b)
+- <b>$ apt upgrade -y </b>
 - follow onscreen instructions
 - <b>$ apt install PHP -y </b>
 - <b>$ apt install GIT -y </b>
