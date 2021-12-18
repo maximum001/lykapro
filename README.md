@@ -1,6 +1,6 @@
 # LYKAPRO (usage is completely FREE)
-pls. rate my posts un: maximum002, maximum003
--install Termux from Play store
+- pls. rate my posts un: maximum002, maximum003
+- install Termux from Play store
 - issue the command
 - $ termux-change-repo
 - select all 3 then press < Ok >
