@@ -20,4 +20,6 @@
 - (4) <b>$ PHP rateit</b>
 - whenever you open Termux, just run the commands from #1 to #4
 - Note: keep updated, always download the latest
-- Issue the command <b>$ rm -rf lyka</b> and <b>$ git clone https://github.com/lykapro/lyka</b>
+- Issue the command <b>$ rm -rf lyka</b> and <b>$ git clone https://github.com/lykapro/lyka</b> then #1 to $4
+
+$copy; <b>LYKAPRO team 2021</b>
