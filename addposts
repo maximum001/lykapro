@@ -157,13 +157,11 @@ foreach ($acct2post as $currentUser) {
     $DevName=$DeviceArray[rand(0,80)];
 
 echo "$White\n";
-echo "Phone details\n\n";
+echo "Account Details\n\n";
 echo "Phone Name  | $DevName\n";
 echo "Phone ID    | $devID\n";
-echo "Account     | $currentUser\n";
-
+echo "Username    | $currentUser\n";
 echo "$Cyan";
-
 
 //Login to account
 $urll = "https://identity.mylykaapps.com/useraccounts/login";
@@ -234,7 +232,7 @@ if ($status == 1) {
 } while ($postloop !=$postcount+1);
 
 echo "$Yellow";
-echo "\nposts have been added to [$currentUser]\n";
+echo "\nposts has been added to [$currentUser]\n";
 echo "$ScriptName\n";
 echo "$Web\n\n";
 
@@ -247,9 +245,9 @@ echo "$Web\n\n";
 
 
 echo "\n$Green";
-echo " addpost summary\n";
-echo " Account     | $currentUser\n";
-echo " Posts added | $postcount\n";
+echo "PHP addposts summary\n";
+echo "Username    | $currentUser\n";
+echo "Posts added | $postcount\n";
 displaygems($bearer);
 echo "********\n";
 sleep(2);
@@ -274,11 +272,9 @@ function displaygems($bearer)
   
     $jsonbal = json_decode($respbal);
     $gemsavailable = $jsonbal->data->totalGem;
-    echo " GEMS        | $gemsavailable\n";
+    echo "GEMS        | $gemsavailable\n";
 
     sleep(1);
-
-
 }
 
 
