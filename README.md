@@ -6,11 +6,11 @@
 - select all 3 then press < Ok >
 - select Mirrors by Tsin or BFSU (whatever is working)
 - issue the command
-- <b>$ apt update -y</b>
-- <b>$ apt upgrade -y</b)
+- <b>$ apt update -y </b>
+- <b>$ apt upgrade -y </b)
 - follow onscreen instructions
-- <b>$ apt install PHP -y<b>
-- <b>$ apt install GIT -y</b>
+- <b>$ apt install PHP -y </b>
+- <b>$ apt install GIT -y </b>
 - when done issue the command
 - <b>$ git clone https://github.com/lykapro/lyka</b>
 - start adding moments, posts and rating posts, issue the command 
