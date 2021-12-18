@@ -13,10 +13,11 @@
 - $ apt install GIT -y
 - when done issue the command
 - $ git clone https://github.com/lykapro/lyka
-- $ cd lyka
-- to add moments, issue the command $ PHP addmoments
-- to add posts, issue the command $ PHP addposts
-- to rate posts, issue the command $ PHP rateit
-- whenever you open Termux, just run the commands from #17 to #20
+- - start adding moments, posts and Rating posts, issue the command 
+- (1) $ cd lyka
+- (2) $ PHP addmoments
+- (3) $ PHP addposts
+- (4) $ PHP rateit
+- whenever you open Termux, just run the commands from #1 to #4
 - Note: keep updated, always download the latest
 - Issue the command $ rm -rf lyka and $ git clone https://github.com/lykapro/lyka
