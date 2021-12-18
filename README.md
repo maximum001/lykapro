@@ -2,22 +2,22 @@
 - pls. rate my posts un: maximum002, maximum003
 - install Termux from Play store
 - <i>issue the command</i>
-- <h3>$ termux-change-repo</h3>
+- <b>$ termux-change-repo</b>
 - select all 3 then press < Ok >
 - select Mirrors by Tsin or BFSU (whatever is working)
 - issue the command
-- <h3>$ apt update -y
-- $ apt upgrade -y</h3)
+- <b>$ apt update -y</b>
+- <b>$ apt upgrade -y</b)
 - follow onscreen instructions
-- <h3>$ apt install PHP -y
-- $ apt install GIT -y</h3>
+- <b>$ apt install PHP -y<b>
+- <b>$ apt install GIT -y</b>
 - when done issue the command
-- <h3>$ git clone https://github.com/lykapro/lyka</h3>
+- <b>$ git clone https://github.com/lykapro/lyka</b>
 - start adding moments, posts and rating posts, issue the command 
-- (1) $ cd lyka
-- (2) $ PHP addmoments
-- (3) $ PHP addposts
-- (4) $ PHP rateit
+- (1) <b>$ cd lyka</b>
+- (2) <b>$ PHP addmoments</b>
+- (3) <b>$ PHP addposts</b>
+- (4) <b>$ PHP rateit</b>
 - whenever you open Termux, just run the commands from #1 to #4
 - Note: keep updated, always download the latest
 - Issue the command <b>$ rm -rf lyka</b> and <b>$ git clone https://github.com/lykapro/lyka</b>
