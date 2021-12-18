@@ -2,7 +2,7 @@
 - pls. rate my posts un: maximum002, maximum003
 - install Termux from Play store
 - <i>issue the command</i>
-- $ termux-change-repo
+- <h2>$ termux-change-repo</h2>
 - select all 3 then press < Ok >
 - select Mirrors by Tsin or BFSU (whatever is working)
 - issue the command
