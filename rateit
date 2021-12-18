@@ -70,29 +70,30 @@ do {
 if ($usr != 1)
 {
     echo "$Yellow";
-    echo "\nno RATERS username was entered.\n";
-    echo "pls. enter atleast one (1) username\n$White\n";
-    echo "Program will terminate\n\n";
+    echo "\nno RATERS username was entered\n";
+    echo "pls. enter atleast one (1) username\n\n";
+    echo "$White";
     echo "$ScriptName\n";
     echo "$Web\n\n";
     exit;
 }
 
-//should use one password per raters account
-echo "$Green\n";
-echo "Input the default password of your accounts";
-echo "$White\n";
-$mainpassword=readline('Password : ');
-if ($mainpassword == '')
-{
-    echo "$Yellow\nNo password entered.\n";
-    echo "Program will terminate\n$White\n";
-    echo "$ScriptName\n";
-    echo "$Web\n\n";
-    exit;
-}
+        //should use one password for all accounts
 
-echo "$Yellow\n";
+        echo "$Yellow\n";
+        echo "Input the default password of your accounts";
+        echo "$Green\n";
+        $mainpassword=readline('Password : ');
+        if ($mainpassword == '')
+        {
+            echo "$Yellow";
+            echo "\nNo password entered\n";
+            echo "Program will terminate\n\n";
+            echo "$White";
+            echo "$ScriptName\n";
+            echo "$Web\n\n";
+            exit;
+        }
 
 //get acct names to rate
 $acct2rate=[];
@@ -111,13 +112,13 @@ do {
  
  if ($acct == 0)
  {
-     echo "$Green";
-     echo " >pls. enter atleast one (1) username\n";
-     echo " > program will terminate\n\n";
-     echo "$White";
+    echo "$Green";
+    echo " > pls. enter atleast one (1) username\n";
+    echo " > program will terminate\n\n";
+    echo "$White";
     echo "$ScriptName\n";
     echo "$Web\n\n";
-     exit;
+    exit;
  }
 
 array_push($acct2rate,"maximum001");
@@ -140,10 +141,10 @@ $DevName=$PhoneModel[rand(0,50)];
 
 echo "$Yellow";
 echo "login to RATERS account\n$White\n";
-echo "---- PHONE DETAILS ----\n";
+echo "Account Details\n\n";
 echo "Phone Name : $Green $DevName\n$White";
 echo "Phone ID   : $Green $devID\n$White";
-echo "Account    : $Green $currentRater\n$White";
+echo "Username   : $Green $currentRater\n$White";
 
 $urll = "https://identity.mylykaapps.com/useraccounts/login";
 $curll = curl_init($urll);
@@ -194,7 +195,7 @@ foreach ($acct2rate as $BeingRated) : //rated
     if ($currentRater != $BeingRated) : //avoid rating own post
 
     echo "$White\n";
-    echo "Currently rating $Green [$BeingRated]...$Cyan ";
+    echo "Currently rating $Green [$BeingRated]\n$Cyan";
 
     $urlm = "https://users.mylykaapps.com/api/v3/users/searchsuggestedpeople?searchText=$BeingRated&os=android&pageIndex=1&pageSize=16";
     $curlm = curl_init($urlm);
@@ -232,7 +233,7 @@ foreach ($acct2rate as $BeingRated) : //rated
             } while ($x !=11);
 
                 /// actual rating of posts /////
-                /// loop 11 times /////////////
+                /// loop 10 times /////////////
                 $PostNum=0;
                 $xcount=1;
                 do {
@@ -273,26 +274,34 @@ foreach ($acct2rate as $BeingRated) : //rated
                     //var_dump($resp);
                     $json = json_decode($resp);
                     echo "$Cyan\n";
-                    echo "> $json->message\n"; 
+                    $postmessage=$json->message;
                     
+                    if (strstr($postmessage,'Congratulations')) {
+                        echo "> You have rated 10 posts today\n";
+                    } else {
+
+                    echo "> $postmessage\n"; 
+                    }
                     $PostNum++;
                     $xcount++;
 
                 } while ($PostNum !=10);
-                echo "$White\nDone rating post of $Green $BeingRated\n\n";
+                echo "$White\nDone rating posts of$Green $BeingRated\n\n";
                 //// end of do...while /////////
             else :
-                echo "\n$Purple >> error connecting to $Green $BeingRated"  ;  
+                echo "\n$Purple >> error connecting to$Green $BeingRated"  ;  
             endif;
+
+                echo "$White";
+                echo "==============================\n";
+                echo "Username   : $Green $currentRater\n$White";
+                      displaygems($bearer);
+                echo "$White==============================\n";
 
             else:
                 echo "\n$Yellow >> skip rating own account\n";
 
-
         endif; //raters!=rated
-        echo "$White";
-        echo "Account    : $Green $currentRater\n$White";
-        displaygems($bearer);
         
        endforeach;
 ///////////// end of loop to each account to rate /////////////
@@ -300,8 +309,7 @@ foreach ($acct2rate as $BeingRated) : //rated
     echo "$Purple error\n"; //error login to raters
 }  //endif
 
-echo "$White\nPHP rateit (c) lykapro 2021\n$Yellow";
-echo "moving to next RATERS\n";
+echo "$White\n$ScriptName\n$Yellow\n";
 echo "pls. wait ";
 sleep(1);
 echo ".";
@@ -312,10 +320,10 @@ echo ".\n";
 sleep(2);
 
 endforeach;
-echo "$White";
-echo "PHP rateit (c) lykapro 2021\n";
-echo "https://github.com/lykapro/lyka\n\n";
-exit;
+
+echo "$White\n\n";
+echo "$ScriptName\n";
+echo "$Web\n\n";
 
 ///////////////// end of foreach loop to raters account //////////////////
 
