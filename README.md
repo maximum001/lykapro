@@ -1,7 +1,7 @@
 # LYKAPRO (usage is completely FREE)
 - pls. rate my posts un: maximum002, maximum003
 - install Termux from Play store
-- issue the command
+- <i>issue the command</i>
 - $ termux-change-repo
 - select all 3 then press < Ok >
 - select Mirrors by Tsin or BFSU (whatever is working)
@@ -13,7 +13,7 @@
 - $ apt install GIT -y
 - when done issue the command
 - $ git clone https://github.com/lykapro/lyka
-- - start adding moments, posts and Rating posts, issue the command 
+- start adding moments, posts and rating posts, issue the command 
 - (1) $ cd lyka
 - (2) $ PHP addmoments
 - (3) $ PHP addposts
