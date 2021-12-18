@@ -6,13 +6,13 @@
 - select all 3 then press < Ok >
 - select Mirrors by Tsin or BFSU (whatever is working)
 - issue the command
-- $ apt update -y
-- $ apt upgrade -y
+- <h3>$ apt update -y
+- $ apt upgrade -y</h3)
 - follow onscreen instructions
-- $ apt install PHP -y
-- $ apt install GIT -y
+- <h3>$ apt install PHP -y
+- $ apt install GIT -y</h3>
 - when done issue the command
-- $ git clone https://github.com/lykapro/lyka
+- <h3>$ git clone https://github.com/lykapro/lyka</h3>
 - start adding moments, posts and rating posts, issue the command 
 - (1) $ cd lyka
 - (2) $ PHP addmoments
@@ -20,4 +20,4 @@
 - (4) $ PHP rateit
 - whenever you open Termux, just run the commands from #1 to #4
 - Note: keep updated, always download the latest
-- Issue the command $ rm -rf lyka and $ git clone https://github.com/lykapro/lyka
+- Issue the command <b>$ rm -rf lyka</b> and <b>$ git clone https://github.com/lykapro/lyka</b>
