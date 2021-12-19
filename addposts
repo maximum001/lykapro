@@ -158,8 +158,8 @@ foreach ($acct2post as $currentUser) {
 
 echo "$White\n";
 echo "Account Details\n\n";
-echo "Phone Name  | $DevName\n";
-echo "Phone ID    | $devID\n";
+//echo "Phone Name  | $DevName\n";
+//echo "Phone ID    | $devID\n";
 echo "Username    | $currentUser\n";
 echo "$Cyan";
 
@@ -194,16 +194,23 @@ $respp = curl_exec($curll);
 curl_close($curll);
 $jsonn = json_decode($respp);
 $msgn = $jsonn->message;
+
+//if ($status == 1) {
+
+if ($msgn == "User logged in") {
+
 $status = $jsonn->status;
 $vuser = $jsonn->data->username;
 $bearer = $jsonn->data->token->accessToken;
 //sleep(1);
 
-if ($status == 1) {
+//echo "$msgn\n";
+//exit;
 
       echo "$White";
       displaygems($bearer);
-      echo "$Cyan\nlogged in\n";
+      echo "$Cyan";
+      echo "$msgn\n\n";
 
  $postloop=1;
  do {  
@@ -232,15 +239,17 @@ if ($status == 1) {
 } while ($postloop !=$postcount+1);
 
 echo "$Yellow";
-echo "\nposts has been added to [$currentUser]\n";
+echo "\nposts has been added to [$currentUser]\n\n";
 echo "$ScriptName\n";
 echo "$Web\n\n";
 
 
 } else {
     echo "$Yellow";
-    echo " Error : username/password does not match.\n";
+    //echo " Error : username/password does not match.\n";
+    echo "$msgn\n";
     echo "$White";
+    break;
 } //end of status==1   
 
 
@@ -249,7 +258,7 @@ echo "PHP addposts summary\n";
 echo "Username    | $currentUser\n";
 echo "Posts added | $postcount\n";
 displaygems($bearer);
-echo "********\n";
+echo "=============================\n";
 sleep(2);
 
 } //end of loop for x username
@@ -561,3 +570,5 @@ function payload($devIDx, $xtraPay, $rTokenx = ""){
  
     return $valdata;
  }
+ 
+?>
