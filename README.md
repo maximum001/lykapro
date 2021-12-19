@@ -18,9 +18,9 @@ pls. rate my posts un: <b><i>maximum002, maximum003</i></b>
 - (2) <b>$ PHP lykapro</b>
 - whenever you open Termux, just run the commands from #1 to #2
 - Note: keep updated, always download the latest script
-- Issue the command
-- <b>$ rm -rf lyka</b> and 
+- Issue the commands
+- <b>$ rm -rf lyka</b> (this will delete the lyka directory)  
 - <b>$ git clone https://github.com/lykapro/lyka</b>
-- then #1 to $4
+- then #1 to $2
 
 <b>(c)LYKAPRO team 2021</b>
