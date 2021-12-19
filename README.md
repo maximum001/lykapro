@@ -15,11 +15,12 @@ pls. rate my posts un: <b><i>maximum002, maximum003</i></b>
 - <b>$ git clone https://github.com/lykapro/lyka</b>
 - start adding moments, posts and rating posts, issue the command 
 - (1) <b>$ cd lyka</b>
-- (2) <b>$ PHP addmoments</b>
-- (3) <b>$ PHP addposts</b>
-- (4) <b>$ PHP rateit</b>
-- whenever you open Termux, just run the commands from #1 to #4
-- Note: keep updated, always download the latest
-- Issue the command <b>$ rm -rf lyka</b> and <b>$ git clone https://github.com/lykapro/lyka</b> then #1 to $4
+- (2) <b>$ PHP lykapro</b>
+- whenever you open Termux, just run the commands from #1 to #2
+- Note: keep updated, always download the latest script
+- Issue the command
+- <b>$ rm -rf lyka</b> and 
+- <b>$ git clone https://github.com/lykapro/lyka</b>
+- then #1 to $4
 
 <b>(c)LYKAPRO team 2021</b>
