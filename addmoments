@@ -175,16 +175,24 @@ $respp = curl_exec($curll);
 curl_close($curll);
 $jsonn = json_decode($respp);
 $msgn = $jsonn->message;
+
+//if ($status == 1) {
+
+if ($msgn == "User logged in") {
+
 $status = $jsonn->status;
 $vuser = $jsonn->data->username;
 $bearer = $jsonn->data->token->accessToken;
 //sleep(1);
 
-if ($status == 1) {
+//echo "$msgn\n";
+//exit;
 
       echo "$White";
       displaygems($bearer);
-      echo "$Cyan\nlogged in\n";
+      echo "$Cyan";
+      echo "$msgn\n\n";
+
 
    $postloop=1;   
 //for ($postloop=1; $postloop<12; $postloop++) {
@@ -203,14 +211,17 @@ do {
 } while ($postloop !=$postcount+1);//end of for loop
 
 echo "$White";
-echo "\nmoments have been added to [$currentUser].\n";
+echo "\nmoments have been added to [$currentUser]\n\n";
 echo "$ScriptName\n";
 echo "$Web\n\n";
 
+
 } else {
     echo "$Yellow";
-    echo "Error : username/password not valid\n";
+    //echo " Error : username/password does not match.\n";
+    echo "$msgn\n";
     echo "$White";
+    break;
 } //end of status==1   
 
 echo "$Green";
@@ -218,7 +229,7 @@ echo "PHP addmoments summary\n\n";
 echo "Username   | $currentUser\n";
 echo "New Moments| $postcount\n";
 displaygems($bearer);
-echo "********\n\n";
+echo "========================\n\n";
 sleep(2);
 
 } //end of loop for x username
@@ -423,10 +434,10 @@ function addMoments($currentUser, $bearer, $device_id) {
                        $uploaded_count++;
                        $upload_attempt = 0;
                    } else {
-                       echo "failed. retrying.";
                        $upload_attempt++;
+                       echo "\n$response_message";
                        if ($upload_attempt >= 5) {
-                           echo "\n Max upload attempt limit reached.\n|\n|";
+                           echo "\nMax upload attempt limit reached.\n";
                            break;
                        }
                    }
