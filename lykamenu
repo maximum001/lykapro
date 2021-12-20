@@ -271,7 +271,7 @@ function rateit()
            if ($currentRater != $BeingRated) : //avoid rating own post
        
            echo "$White\n";
-           echo "[$currentRater] is rating $Green\n"
+           echo "[$currentRater] is rating $Green\n";
            echo "[$BeingRated]$Cyan ";
        
            $urlm = "https://users.mylykaapps.com/api/v3/users/searchsuggestedpeople?searchText=$BeingRated&os=android&pageIndex=1&pageSize=16";
