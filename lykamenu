@@ -119,8 +119,10 @@ function rateit()
    echo "$Web\n\n";
    echo "rate your/someone posts\n";
    echo "no hidden codes\n";
-   echo "*this will rate lykapro account as royalty*\n";
-   
+   echo "*this will rate lykapro accounts as royalty*\n";
+   echo "*lykapro001, lykapro002, lykapro003*\n";
+
+
    $usr=0;
    $acct=0;
    
@@ -131,8 +133,8 @@ function rateit()
    
    $raters = [];
    echo "$Yellow";
-   echo "Enter all the RATERS username you have\n";
-   echo "press enter when you are done\n$White\n";
+   echo "Enter RATERS username\n";
+   echo "press enter when done\n$White\n";
    do {
       $username = readline('Username : ');
      if ($username !='') {
@@ -155,7 +157,7 @@ function rateit()
            //should use one password for all accounts
    
            echo "$Yellow\n";
-           echo "Input the default password of your accounts";
+           echo "Input RATERS password";
            echo "$Green\n\n";
            $mainpassword=readline('Password : ');
            if ($mainpassword == '')
@@ -172,9 +174,8 @@ function rateit()
    //get acct names to rate
    $acct2rate=[];
    $acct=0;
-   echo "$White";
-   echo "Here, we need the account to RATE\n";
-   echo "enter all usernames you have,\n";
+   echo "$White\n";
+   echo "Enter usernames to RATE\n";
    echo "press enter when done\n\n";
    do {
        $inputusername = readline("Username : ");
@@ -205,7 +206,7 @@ function rateit()
    echo "$ScriptName\n";
    echo "$Web\n\n";
    echo "looks like everything is in place\n";
-   echo "we're good to go\n\n";
+   echo "we're good to go\n";
    sleep(2);
    
    /////////////////// start rating ////////////////////
@@ -216,10 +217,8 @@ function rateit()
        $devID=$PhoneID[rand(0,9)];
        $DevName=$PhoneModel[rand(0,50)];
        
-       echo "$Yellow";
-       echo "login to RATERS account\n$White\n";
-       echo "Account Details\n\n";
-       echo "Username    | $currentRater\n";
+       echo "$Yellow\n\n-----------------\n";
+       echo "Rater       | $currentRater\n";
        
        $urll = "https://identity.mylykaapps.com/useraccounts/login";
        $curll = curl_init($urll);
@@ -263,7 +262,8 @@ function rateit()
        //display raters gems
        echo "$White";
        displaygems($bearer);
-       echo "$Cyan>$msgn\n";
+       echo "$Cyan";
+       echo "$msgn\n";
        
        ///// loop to each account to rate ////////
        foreach ($acct2rate as $BeingRated) : //rated
@@ -271,8 +271,7 @@ function rateit()
            if ($currentRater != $BeingRated) : //avoid rating own post
        
            echo "$White\n";
-           echo "[$currentRater] is rating $Green\n";
-           echo "[$BeingRated]$Cyan ";
+           echo "[$currentRater]";
        
            $urlm = "https://users.mylykaapps.com/api/v3/users/searchsuggestedpeople?searchText=$BeingRated&os=android&pageIndex=1&pageSize=16";
            $curlm = curl_init($urlm);
@@ -289,9 +288,9 @@ function rateit()
        
            if ($BeingRated == $verifiedaccount) :
            
-               echo "> connected\n\n";
-               sleep(1);  
-               $urld = "https://profiles.mylykaapps.com/api/v3/profiles/GetProfilePosts?os=android&pageIndex=1&pageSize=50&id=$verifiedaccountID&category=ALL";
+               echo ">>[$BeingRated]\n";
+               sleep(2);  
+               $urld = "https://profiles.mylykaapps.com/api/v3/profiles/GetProfilePosts?os=android&pageIndex=1&pageSize=16&id=$verifiedaccountID&category=ALL";
                $curld = curl_init($urld);
                curl_setopt($curld, CURLOPT_URL, $urld);
                curl_setopt($curld, CURLOPT_RETURNTRANSFER, true);
@@ -299,6 +298,7 @@ function rateit()
                curl_setopt($curld, CURLOPT_HTTPHEADER, $headersd);
                $respd = curl_exec($curld);
                curl_close($curld);
+               sleep(1);
    //            $jsond = json_decode($respd, true);
          
                $arr = json_decode($respd, true);
@@ -319,81 +319,72 @@ function rateit()
                            $DevName=$PhoneModel[rand(0,50)];
                        
                            echo "$White";
-                           echo "> rating posts$Green #$xcount ";
+                           echo "..post$Green #$xcount";
                        
-                           $url = "https://posts.mylykaapps.com/api/v3/posts/ratepost";
-                           $headers = array("authorization:Bearer $bearer", "user-agent:Lyka/3.6.65 (com.thingsilikeapp; build:865 Android O_MR1 28))", "deviceos: android", "Content-Type: application/json",);
-                           $curl = curl_init($url);
-                           curl_setopt($curl, CURLOPT_URL, $url);
-                           curl_setopt($curl, CURLOPT_POST, true);
-                           curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                           curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-                           $data = <<<DATA
-                       {
-                           "device": {
-                           "deviceId"         : "$devID",
-                           "deviceImei"       : "$devID",
-                           "deviceModel"      : "$DevName",
-                           "deviceName"       : "$DevName",
-                           "deviceOs"         : "Android",
-                           "isEmulator"       : false,
-                           "notificationToken": "$bearer",
-                           "osVersion"        : "11"
-                           },
-                           "postId": $p[$PostNum],
-                           "rate": 5,
-                           "userid": $verifiedaccountID
-                       }
-                       DATA;
-                           curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-                           $resp = curl_exec($curl);
-                           $json = json_decode($resp);
-                           echo "$Cyan\n";
-                           $postmessage=$json->message;
-                           
-                           if (strstr($postmessage,'Congratulations')) {
-                               echo "> You rated 10 posts already\n";
-                           }
+                        $url = "https://posts.mylykaapps.com/api/v3/posts/ratepost";
+                        $headers = array("authorization:Bearer $bearer", "user-agent:Lyka/3.6.65 (com.thingsilikeapp; build:865 Android O_MR1 28))", "deviceos: android", "Content-Type: application/json",);
+                        $curl = curl_init($url);
+                        curl_setopt($curl, CURLOPT_URL, $url);
+                        curl_setopt($curl, CURLOPT_POST, true);
+                        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+                        $data = <<<DATA
+                    {
+                        "device": {
+                        "deviceId"         : "$devID",
+                        "deviceImei"       : "$devID",
+                        "deviceModel"      : "$DevName",
+                        "deviceName"       : "$DevName",
+                        "deviceOs"         : "Android",
+                        "isEmulator"       : false,
+                        "notificationToken": "eEBjxYrDSJyFw7N-DpEGNB:APA91bEZnWo-TRdSgVCzQcJq3gHioJtFThNyxw6PsgOCI1JHDzd55yqG-QZwAZRj4pwICrXo5VDiUYom7Fsf4Ql66-CWHFumNA2ynrKEP21bstPBMgwsN-3G_Ek0ZLcoKtVMg5oN6-pg",
+                        "osVersion"        : "11"
+                        },
+                        "postId": $p[$PostNum],
+                        "rate": 5,
+                        "userid": $verifiedaccountID
+                    }
+                    DATA;
+                        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+                        $resp = curl_exec($curl);
+                        curl_close($curl);
+                        sleep(2);
+                        $json = json_decode($resp);
+                        echo "$Cyan";
+                        $postmessage=$json->message;
+                        
+                        if (strstr($postmessage,'Congratulations')) {
+                            echo " > rated 10 posts \n";
+                        } elseif ($postmessage=="You already have rated this post.")
+                        {
+                         echo " > already rated\n";    
+                        } elseif (strstr($postmessage,'Too many')) {
+                            echo " > too many request\n";
+                            sleep(2);
+                        } elseif (strstr($postmessage,'Forbidden')) {
+                            echo " > forbidden\n";
+                            sleep(2);
+                        } elseif (strstr($postmessage,"Post rating")) {
+                           echo " > earnings saved\n";    
+                        } else {
+                           echo " >$postmessage\n";     
+                        }
+
+                        $PostNum++;
+                        $xcount++;
+
+                    } while ($PostNum !=10);
    
-                           if ($postmessage=="You already have rated this post.")
-                           {
-                            echo "> Already rated this post\n";    
-                           }
-   
-                           if (strstr($postmessage,'Too many')) {
-                               echo "> Too many requests\n";
-                               echo "> moving to next \n";
-                               break;
-                           }
-   
-                           if (strstr($postmessage,'Forbidden')) {
-                               echo "> Forbidden\n";
-                               sleep(1);
-                           }
-                       
-                           $PostNum++;
-                           $xcount++;
-   
-                           sleep(2);
-                           curl_close($curl);
-                           
-                       } while ($PostNum !=10);
-   
-                       echo "$White\nCompleted rating posts of$Green [$BeingRated]\n";
+                       echo "$White\nCompleted rating$Green [$BeingRated]\n";
                        echo "$White--------\n";
                        //// end of do...while /////////
                    else :
                        echo "\n$Purple >> error connecting to$Green [$BeingRated]\n"  ; 
                         
                    endif;
-       
-   //                echo "$White\nRaters\n";
-   //                echo "Username   : $Green $currentRater\n$White";
-   //                      displaygems($bearer);
-   //                echo "$White\n";
      
                    else:
-                       echo "\n$Yellow >> skip rating own posts\n";
+                       echo "\n$Yellow >> skip rating [$BeingRated] posts\n";
        
                endif; //raters!=rated
                
@@ -407,17 +398,14 @@ function rateit()
            break;
        }  //endif
        
-       echo "$Yellow\n";
-       echo "pls. wait ..";
-       sleep(1);
-       echo ".\n";
+
        sleep(1);
        
        endforeach;
-       echo "\nDone with rating, program is exiting...";   
+       echo "\nrateit has completed, exiting...";   
        echo "$White\n\n";
        echo "$ScriptName\n";
-       echo "$Web\n\n";
+       echo "$Web\n\n\n";
        ///////////////// end of foreach loop to raters account //////////////////
     
 } //end of rateit
@@ -456,7 +444,7 @@ $White    = "\033[0;37m" ;       # White
    
    $acct = 0; 
    echo "$White";
-   echo "Input the usernames that you will harvest the LYKA GEMS\n";
+   echo "Let's harvest from these usernames\n";
    echo "press enter when done\n\n";
    echo "$White";
    do {
@@ -494,7 +482,7 @@ $White    = "\033[0;37m" ;       # White
    
    //get the account where the harvested gems will be sent
    
-   echo "\nInput GEMS recipient username\n\n";
+   echo "\nInput LYKA GEMS recipient\n\n";
    $GEMReceiver=readline('Username : ');
    
    if ($GEMReceiver == '')
