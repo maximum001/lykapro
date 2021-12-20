@@ -131,8 +131,7 @@ function rateit()
    
    $raters = [];
    echo "$Yellow";
-   echo "We need RATERS username to start\n";
-   echo "enter as many username you have\n";
+   echo "Enter all the RATERS username you have\n";
    echo "press enter when you are done\n$White\n";
    do {
       $username = readline('Username : ');
@@ -157,7 +156,7 @@ function rateit()
    
            echo "$Yellow\n";
            echo "Input the default password of your accounts";
-           echo "$Green\n";
+           echo "$Green\n\n";
            $mainpassword=readline('Password : ');
            if ($mainpassword == '')
            {
@@ -174,11 +173,11 @@ function rateit()
    $acct2rate=[];
    $acct=0;
    echo "$White";
-   echo "Need the username to RATE\n";
-   echo "enter as many username you have\n";
+   echo "Here, we need the account to RATE\n";
+   echo "enter all usernames you have,\n";
    echo "press enter when done\n\n";
    do {
-       $inputusername = readline("\nUsername : ");
+       $inputusername = readline("Username : ");
       if ($inputusername !='') {
        array_push($acct2rate, "$inputusername",);
        $acct=1;
@@ -205,8 +204,8 @@ function rateit()
    echo "$White\n";
    echo "$ScriptName\n";
    echo "$Web\n\n";
-   echo "details have been collected\n";
-   echo "let's start rating posts...\n\n";
+   echo "looks like everything is in place\n";
+   echo "we're good to go\n\n";
    sleep(2);
    
    /////////////////// start rating ////////////////////
@@ -220,9 +219,7 @@ function rateit()
        echo "$Yellow";
        echo "login to RATERS account\n$White\n";
        echo "Account Details\n\n";
-   //    echo "Phone Name : $Green $DevName\n$White";
-   //    echo "Phone ID   : $Green $devID\n$White";
-       echo "Username   : $Green $currentRater\n$White";
+       echo "Username    | $currentRater\n";
        
        $urll = "https://identity.mylykaapps.com/useraccounts/login";
        $curll = curl_init($urll);
@@ -274,7 +271,8 @@ function rateit()
            if ($currentRater != $BeingRated) : //avoid rating own post
        
            echo "$White\n";
-           echo "[$currentRater] is rating $Green [$BeingRated]$Cyan ";
+           echo "[$currentRater] is rating $Green\n"
+           echo "[$BeingRated]$Cyan ";
        
            $urlm = "https://users.mylykaapps.com/api/v3/users/searchsuggestedpeople?searchText=$BeingRated&os=android&pageIndex=1&pageSize=16";
            $curlm = curl_init($urlm);
@@ -462,7 +460,7 @@ $White    = "\033[0;37m" ;       # White
    echo "press enter when done\n\n";
    echo "$White";
    do {
-      $inputusername = readline("\nUsername : ");
+      $inputusername = readline("Username : ");
      if ($inputusername !='') {
       array_push($acct2check, "$inputusername",);
       $acct=1;
@@ -496,7 +494,7 @@ $White    = "\033[0;37m" ;       # White
    
    //get the account where the harvested gems will be sent
    
-   echo "\nInput GEMS recipient username\n";
+   echo "\nInput GEMS recipient username\n\n";
    $GEMReceiver=readline('Username : ');
    
    if ($GEMReceiver == '')
@@ -512,7 +510,7 @@ $White    = "\033[0;37m" ;       # White
    echo "$White\n";
    echo "$ScriptName\n";
    echo "$Web\n\n";
-   echo "details have been collected\n";
+   echo "seems we have gathered necessary info\n";
    echo "let's harvest your GEMS...\n\n";
    sleep(2);
    
@@ -681,7 +679,7 @@ $acct2check = [];
 $usr=0;
 
 echo "$Yellow\n";
-echo "Enter as many username you have\n";
+echo "Enter all usernames you have\n";
 echo "press enter when you are done\n$White\n";
 do {
    $username = readline('Username : ');
@@ -722,7 +720,7 @@ if ($mainpassword == '')
 echo "$White\n";
 echo "$ScriptName\n";
 echo "$Web\n\n";
-echo "details have been collected\n";
+echo "usernames have been gathered\n";
 echo "let's check your GEMS...\n\n";
 sleep(2);
 
@@ -799,7 +797,7 @@ DATA;
 
   }//end of "User logged in"  
 
-} //end of loop for each dummy
+} //end of loop for each account
 
   //rene_wolverine uid = 700002814478
 
@@ -903,7 +901,7 @@ function postit()
    echo "press enter when done\n\n";
    echo "$White";
    do {
-      $inputusername = readline("\nUsername : ");
+      $inputusername = readline("Username : ");
      if ($inputusername !='') {
       array_push($acct2post, "$inputusername",);
       $acct=1;
@@ -925,7 +923,7 @@ function postit()
    echo "\n";
    
    echo "$White";
-   $mainpassword=readline("\n Password : ");
+   $mainpassword=readline("Password : ");
    if ($mainpassword == '')
    {
        echo "$Yellow";
@@ -951,11 +949,11 @@ function postit()
    $posttitle=readline("Title : ");
    
    @system("clear");
-   echo "$Yellow\n";
+   echo "$White\n";
    echo "$ScriptName\n";
-   echo "$Web\n\n";
-   echo "details have been collected\n";
-   echo "script is starting ...\n";
+   echo "$Web\n$Yellow\n";
+   echo "time to add posts to your account\n";
+   echo "fasten your seatbelt\n";
    sleep(2);
    
    
@@ -1373,7 +1371,7 @@ echo "enter as many username you have\n";
 echo "press enter when done\n\n";
 echo "$White";
 do {
-   $inputusername = readline("\nUsername : ");
+   $inputusername = readline("Username : ");
   if ($inputusername !='') {
    array_push($acct2post, "$inputusername",);
    $acct=1;
@@ -1415,11 +1413,11 @@ if ($postcount =='') {
 }
 
 @system("clear");
-echo "$Yellow\n";
+echo "$White\n";
 echo "$ScriptName\n";
-echo "$Web\n\n";
-echo "details have been collected\n";
-echo "script is starting ...\n";
+echo "$Web\n$Yellow\n";
+echo "are you ready to post your moments?\n";
+echo "let's go!!!\n";
 sleep(2);
 
 foreach ($acct2post as $currentUser) {
@@ -1430,9 +1428,7 @@ $devID=$DeviceIDarray[rand(0,9)];
 $DevName=$DeviceArray[rand(0,80)];
 
 echo "$White";
-echo "Account Details\n\n";
-echo "Phone Name | $DevName\n";
-echo "Phone ID   | $devID\n";
+echo "Account to addmoments\n\n";
 echo "Username   | $currentUser\n";
 
 echo "$Cyan";
@@ -1789,10 +1785,10 @@ function payload($devIDx, $xtraPay, $rTokenx = ""){
                 "deviceId": "$devIDx",
                 "deviceImei": "$devIDx",
                 "deviceModel": "Tecno Spark 7 Pro",
-                "deviceName": "android",
-                "deviceOs": "Android R ",
+                "deviceName": "Tecno Spark 7 Pro"",
+                "deviceOs": "Android",
                 "isEmulator": false,
-                "osVersion": "30",
+                "osVersion": "11",
                 "notificationToken": "$rTokenx"
             },
             "countryCode": "US",
@@ -1818,7 +1814,7 @@ function payload($devIDx, $xtraPay, $rTokenx = ""){
      $jsonbal = json_decode($respbal);
      $gemsavailable = $jsonbal->data->totalGem;
      echo "GEMS        | $gemsavailable\n";
- 
+
      sleep(1); 
  } //end displaygems 
 
