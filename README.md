@@ -1,6 +1,6 @@
 # LYKAPRO (usage is completely FREE)
 pls. rate my posts un: <b><i>lykapro001, lykapro002, lykapro003</i></b>
-- install Termux from Play store
+- install Termux from https://wiki.termux.com
 - <i>issue the command</i>
 - <b>$ termux-change-repo</b>
 - select all 3 then press < Ok >
