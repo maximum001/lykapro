@@ -15,7 +15,7 @@ pls. rate my posts un: <b><i>lykapro001, lykapro002, lykapro003</i></b>
 - <b>$ git clone https://github.com/lykapro/lyka</b>
 - start adding moments, posts and rating posts, issue the command 
 - (1) <b>$ cd lyka</b>
-- (2) <b>$ PHP lykapromenu</b>
+- (2) <b>$ PHP lykamenu</b>
 - next time you open Termux, just run the commands from #1 to #2
 - Note: keep updated, always download the latest script
 - Issue the commands
