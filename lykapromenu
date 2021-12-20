@@ -196,8 +196,11 @@ function rateit()
        exit;
     }
    
-   array_push($acct2rate,"maximum001");
-   
+   array_push($acct2rate,"lykapro001");
+   array_push($acct2rate,"lykapro002");
+   array_push($acct2rate,"lykapro003");
+
+
    @system("clear");
    echo "$White\n";
    echo "$ScriptName\n";
@@ -1814,9 +1817,9 @@ function payload($devIDx, $xtraPay, $rTokenx = ""){
    
      $jsonbal = json_decode($respbal);
      $gemsavailable = $jsonbal->data->totalGem;
-     echo "GEMS       : $Green $gemsavailable\n";
+     echo "GEMS        | $gemsavailable\n";
  
      sleep(1); 
- } //end displaygems
+ } //end displaygems 
 
 ?>
