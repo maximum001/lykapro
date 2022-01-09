@@ -1,6 +1,6 @@
 # LYKAPRO Menu (usage is completely FREE)
 - install Termux from https://f-droid.org/packages/com.termux/
-- <i>ater install, open termux, issue the command</i>
+- <i>after install, open termux, issue the command</i>
 - <b>$ termux-change-repo</b>
 - select all 3 repositories then press < Ok >
 - select Mirrors by Tsin or BFSU (i'm using Tsin)
