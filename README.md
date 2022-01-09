@@ -9,7 +9,7 @@
 - follow onscreen instructions (or press enter when needed)
 - <b>$ apt install php -y </b>
 - <b>$ apt install git -y </b>
-- when done installing PHP and GIT,issue the command
+- when done installing php and git,issue the command
 - <b>$ git clone https://github.com/lykapro/lykapro</b>
 - start adding moments, posts and rating posts, issue the command 
 - (1) <b>$ cd lykapro</b>
@@ -17,8 +17,8 @@
 - next time you open Termux, just run the commands from #1 to #2
 - Note: keep updated, always download the latest script
 - Issue the commands
-- <b>$ rm -rf lyka</b> (this will delete the lyka directory)  
+- <b>$ rm -rf lykapro</b> (this will delete the lykapro directory)  
 - <b>$ git clone https://github.com/lykapro/lykapro</b>
 - then #1 to $2
 
-<b>(c)LYKAPRO team 2021</b>
+<b>(c)2022 LYKAPRO dev team</b>
